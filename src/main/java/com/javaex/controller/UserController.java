@@ -32,7 +32,8 @@ public class UserController {
 		System.out.println("UserController > join()");
 
 		userService.userInsert(userVo);
-		return "";
+
+		return "redirect: user/joinOk";
 	}
 
 	// 유저_3> 로그인폼
