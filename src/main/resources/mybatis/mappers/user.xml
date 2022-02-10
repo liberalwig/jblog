@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<!-- 유저_1> 회원가입 폼: 없음 -->
+
+	<!-- 유저_2> 회원가입 -->
+	<insert id="userInsert" parameterType="UserVo">
+	<![CDATA[
+		insert INTO users
+		values (SEQ_USERS_NO.nextval,
+						#{id},
+						#{userName},
+						#{password},
+						sysdate)
+    ]]>
+	</insert>
+
+	<!-- 유저_3> 로그인 폼: 없음 -->
+
+	<!-- 유저_4> 로그인 -->
+	<select id="selectUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select no,
+       					 name
+			from users
+			where id=#{id}
+			and password=#{password}
+		]]>
+	</select>
+
+
+	<!-- 유저_5> 로그아웃 + 유저_7> 회원정보수정, 이 둘을 위해서 정보 가져오기 -->
+	<select id="selectUserByNo" parameterType="int" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select no,
+       					 id,
+       					 password,
+       					 name,
+       					 gender
+			from users
+			where no=#{no}
+		]]>
+	</select>
+
+	<!-- 유저_6> 회원정보 수정 폼: 없음 -->
+
+	<!-- 유저_7> 회원정보 수정 후 업데이트 -->
+	<update id="update" parameterType="com.javaex.vo.UserVo">
+	<![CDATA[
+		update users
+		set         name=#{name},
+		   		       password=#{password},
+		    	       gender=#{gender}
+		where  no=#{no}
+    ]]>
+	</update>
+
+</mapper>

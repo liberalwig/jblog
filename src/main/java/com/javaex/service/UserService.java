@@ -16,7 +16,11 @@ public class UserService {
 	
 	
 	// 유저_2> 회원가입
-	
+	public int userInsert() {
+		
+		int count = UserDao.userInsert(userVo);
+		return count;
+	}
 	
 	// 유저_3> 로그인 폼
 	
