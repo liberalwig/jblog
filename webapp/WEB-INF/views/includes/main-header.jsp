@@ -6,6 +6,7 @@
 	 	<a href="">
 			<img class="logo" src="">
 		</a>
+		
 		<ul class="menu">
 			<!-- 로그인 전 메뉴 -->
 			<li><a href="${pageContext.request.contextPath}/user/loginForm">로그인</a></li>

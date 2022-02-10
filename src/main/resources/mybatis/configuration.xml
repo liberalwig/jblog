@@ -5,7 +5,6 @@
 <configuration>
 
 	<typeAliases>
-
 	</typeAliases>
 
 	<mappers>
@@ -13,4 +12,5 @@
 		<mapper resource="mybatis/mappers/guestbook.xml" />
 		<mapper resource="mybatis/mappers/board.xml" />
 	</mappers>
+
 </configuration>
