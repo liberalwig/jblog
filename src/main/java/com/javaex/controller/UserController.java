@@ -28,22 +28,56 @@ public class UserController {
 	}
 
 	// 유저_2> 회원가입
+	@RequestMapping("/join")
 	public String join(@ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("UserController > join()");
 
-		userService.userInsert(userVo);
+		userService.insertUser(userVo);
 
 		return "redirect: user/joinOk";
 	}
 
 	// 유저_3> 로그인폼
+	@RequestMapping("/loginForm")
+	public String loginForm() {
+		System.out.println("UserController >loginForm()");
+
+		return "user/loginForm";
+	}
 
 	// 유저_4> 로그인: 성공-실패
+	@RequestMapping("/login")
+	public String login(UserVo userVo, HttpSession session) {
+		System.out.println("UserController >login()");
+
+		UserVo authUser = userService.selectUser(userVo);
+		System.out.println(authUser);
+
+		if (authUser != null) {
+			session.setAttribute("authUser", authUser);
+			
+			System.out.println(" 로그인에 성공했습니다");
+			return "redirect:/";
+		} 
+		else {
+			System.out.println("로그인에 실패했습니다");
+			
+			return "redirect:/user/loginForm?result=fail";
+		}
+
+	}
+
+	}
 
 	// 유저_5> 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		System.out.println("UserController >logout()");
 
-	// 유저_6> 회원정보 수정 폼
+		session.removeAttribute("authUser");
+		session.invalidate();
 
-	// 유저_7> 회원정보 수정
+		return "redirect: /";
+	}
 
 }

@@ -14,6 +14,6 @@
 
 	<!-- 로그인 후 메뉴 -->
 	<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
-	<li><a href="">내 블로그</a></li>
+	<li><a href="${pageContext.request.contextPath}/${vo.id}">내 블로그</a></li>
 
 </ul>

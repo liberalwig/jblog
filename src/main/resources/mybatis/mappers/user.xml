@@ -7,7 +7,7 @@
 	<!-- 유저_1> 회원가입 폼: 없음 -->
 
 	<!-- 유저_2> 회원가입 -->
-	<insert id="userInsert" parameterType="UserVo">
+	<insert id="insertUser" parameterType="UserVo">
 	<![CDATA[
 		insert INTO users
 		values (SEQ_USERS_NO.nextval,
@@ -23,8 +23,8 @@
 	<!-- 유저_4> 로그인 -->
 	<select id="selectUser" parameterType="UserVo" resultType="UserVo">
 		<![CDATA[
-			select no,
-       					 name
+			select userNo,
+       					userName
 			from users
 			where id=#{id}
 			and password=#{password}
@@ -32,30 +32,17 @@
 	</select>
 
 
-	<!-- 유저_5> 로그아웃 + 유저_7> 회원정보수정, 이 둘을 위해서 정보 가져오기 -->
+	<!-- 유저_5> 로그아웃 -->
 	<select id="selectUserByNo" parameterType="int" resultType="UserVo">
 		<![CDATA[
-			select no,
+			select userNo,
        					 id,
        					 password,
-       					 name,
-       					 gender
+       					 userName,
+       					 joinDate
 			from users
-			where no=#{no}
+			where userNo=#{userNo}
 		]]>
 	</select>
-
-	<!-- 유저_6> 회원정보 수정 폼: 없음 -->
-
-	<!-- 유저_7> 회원정보 수정 후 업데이트 -->
-	<update id="update" parameterType="UserVo">
-	<![CDATA[
-		update users
-		set         name=#{name},
-		   		       password=#{password},
-		    	       gender=#{gender}
-		where  no=#{no}
-    ]]>
-	</update>
 
 </mapper>
