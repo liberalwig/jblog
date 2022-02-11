@@ -21,7 +21,7 @@
 	<!-- 유저_3> 로그인 폼: 없음 -->
 
 	<!-- 유저_4> 로그인 -->
-	<select id="selectUser" parameterType="UserVo" resultType="UserVo">
+	<select id="getUser" parameterType="UserVo" resultType="UserVo">
 		<![CDATA[
 			select userNo,
        					userName
@@ -45,4 +45,14 @@
 		]]>
 	</select>
 
+
+	<!-- 유저_6> 아이디중복체크 -->
+	<select id="getId" parameterType="UserVo" resultType="UserVo">
+		<![CDATA[
+			select		id,
+			from users
+			where id=#{id}
+		]]>
+	</select>
+	
 </mapper>

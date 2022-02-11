@@ -26,17 +26,22 @@ public class UserDao {
 		return count;
 	}
 
-// 유저_3> 로그인 폼: 없음
+	// 유저_3> 로그인 폼: 없음
 
-// 유저_4> 로그인: 성공-실패
-	public UserVo selectUser(UserVo userVo) {
+	// 유저_4> 로그인: 성공-실패
+	public UserVo getUser(UserVo userVo) {
 		System.out.println("UserDao > selectUser()");
-	
-		return sqlSession.selectOne("user.selectUser", userVo);
-	}
-	
-	
-// 유저_5> 로그아웃
 
+		return sqlSession.selectOne("user.getUser", userVo);
+	}
+
+		// 유저_5> 로그아웃: 없음
+
+	// 유저_6> 아이디중복체크	
+	public UserVo getId(UserVo userVo) {
+		System.out.println("UserDao > getId()");
+
+		return sqlSession.selectOne("user.getId", userVo);
+	}
 
 }

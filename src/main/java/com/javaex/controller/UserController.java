@@ -32,9 +32,9 @@ public class UserController {
 	public String join(@ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("UserController > join()");
 
-		userService.insertUser(userVo);
+		userService.join(userVo);
 
-		return "redirect: user/joinOk";
+		return "redirect:user/joinOk";
 	}
 
 	// 유저_3> 로그인폼
@@ -50,23 +50,19 @@ public class UserController {
 	public String login(UserVo userVo, HttpSession session) {
 		System.out.println("UserController >login()");
 
-		UserVo authUser = userService.selectUser(userVo);
+		UserVo authUser = userService.login(userVo);
 		System.out.println(authUser);
 
 		if (authUser != null) {
 			session.setAttribute("authUser", authUser);
-			
+
 			System.out.println(" 로그인에 성공했습니다");
 			return "redirect:/";
-		} 
-		else {
+		} else {
 			System.out.println("로그인에 실패했습니다");
-			
+
 			return "redirect:/user/loginForm?result=fail";
 		}
-
-	}
-
 	}
 
 	// 유저_5> 로그아웃
@@ -77,7 +73,17 @@ public class UserController {
 		session.removeAttribute("authUser");
 		session.invalidate();
 
-		return "redirect: /";
+		return "redirect:/";
+	}
+
+	// 유저_6> 아이디중복체크
+	@RequestMapping("/idDoubCheck")
+	public String idDoubCheck(@ModelAttribute UserVo userVo) {
+		System.out.println("UserController >idDoubCheck()");
+
+		userService.idDoubCheck(userVo);
+		
+		return "";
 	}
 
 }
