@@ -37,6 +37,7 @@ public class UserService {
 
 	// 유저_5> 로그아웃: 없음
 
+	/*
 	// 유저_6> 아이디중복체크
 	public int idDoubCheck(UserVo userVo) {
 
@@ -44,5 +45,6 @@ public class UserService {
 
 		return result;
 	}
+*/
 
 }
