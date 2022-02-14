@@ -9,6 +9,10 @@
 <title>JBlog</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
+<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 </head>
 
@@ -38,7 +42,9 @@
 					</tr>
 					
 					<tr>
-						<td colspan="2" id="tdMsg" colspan="2"><span>아이디 또는 비번을 확인해 주세요.</span></td>
+						<td colspan="2" id="tdMsg" colspan="2">
+						<span>아이디 또는 비번을 확인해 주세요.</span>
+						</td>
 					</tr>
 				</table>
 				

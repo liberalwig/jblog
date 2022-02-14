@@ -29,15 +29,23 @@ public class UserController {
 
 	// 유저_2> 회원가입
 	@RequestMapping("/join")
-	public String join(@ModelAttribute UserVo userVo, HttpSession session) {
+	public String join(@ModelAttribute UserVo userVo) {
 		System.out.println("UserController > join()");
 
 		userService.join(userVo);
 
-		return "redirect:user/joinOk";
+		return "user/joinSuccess";
 	}
 
-	// 유저_3> 로그인폼
+	// 유저_3> 아이디중복체크
+	@RequestMapping("/idDoubCheck")
+	public String idDoubCheck(@ModelAttribute UserVo userVo) {
+		System.out.println("UserController >idDoubCheck()");
+				
+		return userService.idDoubCheck(userVo);
+	}
+	
+	// 유저_4> 로그인폼
 	@RequestMapping("/loginForm")
 	public String loginForm() {
 		System.out.println("UserController >loginForm()");
@@ -45,7 +53,7 @@ public class UserController {
 		return "user/loginForm";
 	}
 
-	// 유저_4> 로그인: 성공-실패
+	// 유저_5> 로그인: 성공-실패
 	@RequestMapping("/login")
 	public String login(UserVo userVo, HttpSession session) {
 		System.out.println("UserController >login()");
@@ -65,7 +73,7 @@ public class UserController {
 		}
 	}
 
-	// 유저_5> 로그아웃
+	// 유저_6> 로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		System.out.println("UserController >logout()");
@@ -74,16 +82,6 @@ public class UserController {
 		session.invalidate();
 
 		return "redirect:/";
-	}
-
-	// 유저_6> 아이디중복체크
-	@RequestMapping("/idDoubCheck")
-	public String idDoubCheck(@ModelAttribute UserVo userVo) {
-		System.out.println("UserController >idDoubCheck()");
-
-		userService.idDoubCheck(userVo);
-		
-		return "";
 	}
 
 }

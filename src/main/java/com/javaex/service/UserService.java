@@ -16,17 +16,26 @@ public class UserService {
 	// 유저_1> 회원가입 폼: 없음
 
 	// 유저_2> 회원가입
-	public int join(UserVo userVo) {
+	public String join(UserVo userVo) {
 		System.out.println("UserService > join()");
 
-		int count = UserDao.insertUser(userVo);
+		userDao.insertUser(userVo);
 
-		return count;
+		return "";
 	}
 
-	// 유저_3> 로그인 폼: 없음
+	// 유저_3> 아이디중복체크
+	public int idDoubCheck(UserVo userVo) {
+		System.out.println("UserService > idDoubCheck()");
+		
+		int result = userDao.getId(userVo);
 
-	// 유저_4> 로그인: 성공-실패
+		return result;
+	}
+
+	// 유저_4>로그인 폼: 없음
+
+	// 유저_5>로그인: 성공-실패
 	public UserVo login(UserVo userVo) {
 		System.out.println("UserService >  login()");
 
@@ -35,16 +44,6 @@ public class UserService {
 		return authUser;
 	}
 
-	// 유저_5> 로그아웃: 없음
-
-	/*
-	// 유저_6> 아이디중복체크
-	public int idDoubCheck(UserVo userVo) {
-
-		int result = userDao.getId(userVo);
-
-		return result;
-	}
-*/
+	// 유저_6> 로그아웃: 없음
 
 }

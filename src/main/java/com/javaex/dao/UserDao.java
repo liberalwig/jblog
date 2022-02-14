@@ -14,7 +14,7 @@ public class UserDao {
 	private SqlSession sqlSession;
 
 	// 메소드 일반
-	// 유저_1> 회원가입 폼
+	// 유저_1> 회원가입 폼: 없음
 
 	// 유저_2> 회원가입
 	public int insertUser(UserVo userVo) {
@@ -26,22 +26,22 @@ public class UserDao {
 		return count;
 	}
 
-	// 유저_3> 로그인 폼: 없음
+	// 유저_3> 아이디중복체크
+	public UserVo getId(UserVo userVo) {
+		System.out.println("UserDao > getId()");
 
-	// 유저_4> 로그인: 성공-실패
+		return sqlSession.selectOne("user.getId", userVo);
+	}
+
+	// 유저_4> 로그인 폼: 없음
+
+	// 유저_5> 로그인: 성공-실패
 	public UserVo getUser(UserVo userVo) {
 		System.out.println("UserDao > selectUser()");
 
 		return sqlSession.selectOne("user.getUser", userVo);
 	}
 
-		// 유저_5> 로그아웃: 없음
-
-	// 유저_6> 아이디중복체크	
-	public UserVo getId(UserVo userVo) {
-		System.out.println("UserDao > getId()");
-
-		return sqlSession.selectOne("user.getId", userVo);
-	}
+	// 유저_6> 로그아웃: 없음
 
 }
