@@ -41,10 +41,11 @@ public class UserController {
 	@RequestMapping("/idDoubCheck")
 	public String idDoubCheck(@ModelAttribute UserVo userVo) {
 		System.out.println("UserController >idDoubCheck()");
-				
-		return userService.idDoubCheck(userVo);
+
+		userService.idDoubCheck(userVo);
+		return "";
 	}
-	
+
 	// 유저_4> 로그인폼
 	@RequestMapping("/loginForm")
 	public String loginForm() {
