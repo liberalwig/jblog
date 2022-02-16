@@ -17,6 +17,8 @@ public class BlogController {
 	// 메소드 일반
 	// 블로그_1> 
 	
+	// 블로그_2>
+	
 	
 	
 }
