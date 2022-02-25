@@ -10,7 +10,7 @@ import com.javaex.service.BlogService;
 @RequestMapping(value="/blog")
 public class BlogController {
 	
-	// 필드
+	// 필드 
 	@Autowired
 	BlogService blogService;
 	
